@@ -47,13 +47,13 @@ function App() {
         </Toolbar>
       </AppBar>
       <Paper className={classes.root}>
-        <Typography variant="h5" component="h3">
+        <Typography variant="h3">
           Search Github Users
       </Typography>
-        <Typography component="p">
+        <Typography variant="h5">
           Enter a user username to fetch a user profile and repos
       </Typography>
-        <TextField id="outlined-basic" label="Outlined" variant="outlined"/>
+        <TextField id="full-width-text-field" label="Github Username" width={300} />
       </Paper>
     </div>
   );
