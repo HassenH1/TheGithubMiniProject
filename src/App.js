@@ -22,23 +22,25 @@ function App() {
   const [users, setUsers] = useState({})
 
   const handleChange = (e) => {
-    // setUsers(e.target.value)
-    setUsers({
-      ...users,
-      [e.target.name]: e.target.value
-    })
-    console.log(users, "<---users state")
-    // getUsers(users)
+    // setUsers({
+    //   ...users,
+    //   [e.target.name]: e.target.value
+    // },)
+    getUsers(e.target.value)
   }
-  // const getUsers = async (users) => {
-  //   const clientId = "2f0015355a97f0481126"
-  //   const secret = "99af4419b4d8485eebc3e5f62289bf2a426fb2ac"
-  //   const profileResponse = await fetch(`https://api.github.com/users/${users}?client_id=${clientId}&client_secret=${secret}`)
-  //   const Json = await profileResponse.json()
-  //   showUser(Json)
-  // }
+  const getUsers = async (users) => {
+    const clientId = "2f0015355a97f0481126"
+    const secret = "ba23bdad1caba7400d575f16a9de0b453b878d67"
+    const profileResponse = await fetch(`https://api.github.com/users/${users}?client_id=${clientId}&client_secret=${secret}`)
+    const Json = await profileResponse.json()
+    // showUser(Json)
+    setUsers({
+      Json
+    })
+    console.log(Json)
+  }
   // const showUser = (user) => {
-  //   console.log(user)
+  //   // console.log(user.avatar_url, "show users")
   // }
   return (
     <div>
@@ -56,8 +58,19 @@ function App() {
         <Typography variant="h5">
           Enter a user username to fetch a user profile and repos
       </Typography>
-        <TextField id="full-width-text-field" label="Github Username" width={300} onChange={handleChange} name="users"/>
+        <TextField id="full-width-text-field" label="Github Username" width={300} onChange={handleChange} name="users" />
       </Paper>
+      <br />
+      <br />
+      <br />
+      {/* {console.log(users.Json.avatar_url)} */}
+      {users && users.Json
+        ? <div>
+          <img src={users.Json.avatar_url} alt={users.Json.name} />
+          <h3>{users.Json.name}</h3>
+        </div>
+        : ""
+      }
     </div>
   );
 }
