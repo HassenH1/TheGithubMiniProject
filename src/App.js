@@ -6,7 +6,6 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import { TextField } from '@material-ui/core';
-import { spacing } from '@material-ui/system';
 
 import './App.css';
 
@@ -31,9 +30,19 @@ const useStyles = makeStyles(theme => ({
     fontSize: 15.17,
     position: "relative",
     right: 22.5,
-    border: "1px solid black",
+    borderBottom: "1px solid black",
+    borderTop: "1px solid black",
     width: 200,
-    margin: theme.spacing(5.5, 0)
+    padding: theme.spacing(1.5, 0),
+    margin: theme.spacing(5.5, 0),
+    '&:hover': {
+      color: "purple"
+    }
+  },
+  ay: {
+    textDecoration: "none",
+    curser: "pointer",
+    color: "inherit",
   },
   flexing: {
     display: "flex",
@@ -106,7 +115,7 @@ function App() {
             {
               users.Json.avatar_url
                 ? <div>
-                  <a href={users.Json.html_url}>
+                  <a href={users.Json.html_url} target="_blank" rel="noopener noreferrer">
                     <img src={users.Json.avatar_url} alt={users.Json.name} className={classes.image} />
                   </a>
                 </div>
@@ -121,7 +130,7 @@ function App() {
               <h4>Latest Repository</h4>
               {repo.repoJson.map((elem, i) => {
                 return (<ul>
-                  <li key={i} className={classes.li}>{elem.name}</li>
+                  <a href={elem.html_url} target="_blank" rel="noopener noreferrer" className={classes.ay}><li key={i} className={classes.li}>{elem.name}</li></a>
                 </ul>)
               })}</div>
             : ""
