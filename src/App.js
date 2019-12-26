@@ -19,24 +19,27 @@ const useStyles = makeStyles(theme => ({
 
 function App() {
   const classes = useStyles();
-  const [users, setUsers] = useState([])
+  const [users, setUsers] = useState({})
 
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     await (await (await fetch('https://api.github.com/users'))).json()
-  //     .then(data => setUsers(data))
-  //   }
-  //   fetchData()
-  // }, [])
-
-  // const all = users.map((elem) => {
-  //   return(
-  //     <div>
-  //   <div key={elem.id}>{elem.login}</div>
-  //   <img src={elem.avatar_url} alt="github images"/>
-  //   </div>
-  //   )
-  // })
+  const handleChange = (e) => {
+    // setUsers(e.target.value)
+    setUsers({
+      ...users,
+      [e.target.name]: e.target.value
+    })
+    console.log(users, "<---users state")
+    // getUsers(users)
+  }
+  // const getUsers = async (users) => {
+  //   const clientId = "2f0015355a97f0481126"
+  //   const secret = "99af4419b4d8485eebc3e5f62289bf2a426fb2ac"
+  //   const profileResponse = await fetch(`https://api.github.com/users/${users}?client_id=${clientId}&client_secret=${secret}`)
+  //   const Json = await profileResponse.json()
+  //   showUser(Json)
+  // }
+  // const showUser = (user) => {
+  //   console.log(user)
+  // }
   return (
     <div>
       <AppBar position="static">
@@ -53,7 +56,7 @@ function App() {
         <Typography variant="h5">
           Enter a user username to fetch a user profile and repos
       </Typography>
-        <TextField id="full-width-text-field" label="Github Username" width={300} />
+        <TextField id="full-width-text-field" label="Github Username" width={300} onChange={handleChange} name="users"/>
       </Paper>
     </div>
   );
