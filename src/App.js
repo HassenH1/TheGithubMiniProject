@@ -1,32 +1,49 @@
 import React from 'react';
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import { TextField } from '@material-ui/core';
+import { spacing } from '@material-ui/system';
+
 import './App.css';
 
 const useStyles = makeStyles(theme => ({
   root: {
+    margin: theme.spacing(0, 20, 0, 20),
     '& > *': {
       padding: theme.spacing(3, 2),
-      margin: theme.spacing(0, 20, 0, 20)
+      margin: theme.spacing(0, 20, 0, 20),
+      // width: theme.spacing(16),
     },
   },
-  test : {
-    margin: theme.spacing(0, 50, 0, 50),
+  test: {
+    margin: theme.spacing(10, 10, 0, 10),
     textAlign: "center",
     position: "relative",
     bottom: 107,
   },
-  li : {
+  li: {
     listStyle: "none",
     display: "block",
-    fontSize: 30.17,
+    fontSize: 15.17,
     position: "relative",
-    right: 22.5
+    right: 22.5,
+    border: "1px solid black",
+    width: 200,
+    margin: theme.spacing(5.5, 0)
+  },
+  flexing: {
+    display: "flex",
+    justifyContent: "center",
+    flexDirection: "row",
+    margin: theme.spacing(-4, 0),
+  },
+  image: {
+    height: 350,
+    width: 370
   }
 }));
 
@@ -70,7 +87,7 @@ function App() {
           </Typography>
         </Toolbar>
       </AppBar>
-      <Paper className={classes.root}>
+      <Paper className={classes.root} mx="auto">
         <Typography variant="h3">
           Search Github Users
       </Typography>
@@ -82,25 +99,34 @@ function App() {
       <br />
       <br />
       <br />
-      {console.log(repo && repo.repoJson, "<--------whats this?")}
-      {users && users.Json
-        ? <div className={classes.test}>
-          <img src={users.Json.avatar_url} alt={users.Json.name} />
-          <h3>{users.Json.name}</h3>
-        </div>
-        : ""
-      }
-      {
-        repo.repoJson && repo.repoJson.length > 0
+      <div className={classes.flexing}>
+        {users && users.Json
           ? <div className={classes.test}>
-            <h4>Latest Repository</h4>
-            {repo.repoJson.map((elem, i) => {
-              return (<ul>
-                <li key={i} className={classes.li}>{elem.name}</li>
-              </ul>)
-            })}</div>
+            <h3>{users.Json.name}</h3>
+            {
+              users.Json.avatar_url
+                ? <div>
+                  <a href={users.Json.html_url}>
+                    <img src={users.Json.avatar_url} alt={users.Json.name} className={classes.image} />
+                  </a>
+                </div>
+                : ""
+            }
+          </div>
           : ""
-      }
+        }
+        {
+          repo.repoJson && repo.repoJson.length > 0
+            ? <div className={classes.test}>
+              <h4>Latest Repository</h4>
+              {repo.repoJson.map((elem, i) => {
+                return (<ul>
+                  <li key={i} className={classes.li}>{elem.name}</li>
+                </ul>)
+              })}</div>
+            : ""
+        }
+      </div>
     </div>
   );
 }
