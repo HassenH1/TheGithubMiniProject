@@ -20,6 +20,7 @@ const useStyles = makeStyles(theme => ({
 function App() {
   const classes = useStyles();
   const [users, setUsers] = useState({})
+  const [repo, setRepo] = useState({})
 
   const handleChange = (e) => {
     // setUsers({
@@ -31,13 +32,22 @@ function App() {
   const getUsers = async (users) => {
     const clientId = "2f0015355a97f0481126"
     const secret = "ba23bdad1caba7400d575f16a9de0b453b878d67"
+    const reposCount = 5
+    const reposSort = 'asc'
     const profileResponse = await fetch(`https://api.github.com/users/${users}?client_id=${clientId}&client_secret=${secret}`)
     const Json = await profileResponse.json()
     // showUser(Json)
+    const repo = await fetch(`https://api.github.com/users/${users}/repos?per_page=${reposCount}&sort=${reposSort}&client_id=${clientId}&client_secret=${secret}`)
+    const repoJson = await repo.json()
+    console.log(repoJson, "<----repos")
+
+
     setUsers({
-      Json
+      Json,
     })
-    console.log(Json)
+    setRepo({
+      repoJson
+    })
   }
   // const showUser = (user) => {
   //   // console.log(user.avatar_url, "show users")
@@ -63,13 +73,24 @@ function App() {
       <br />
       <br />
       <br />
-      {/* {console.log(users.Json.avatar_url)} */}
+      {console.log(repo.repoJson)}
       {users && users.Json
         ? <div>
           <img src={users.Json.avatar_url} alt={users.Json.name} />
           <h3>{users.Json.name}</h3>
         </div>
         : ""
+      }
+      {
+        repo.repoJson
+          ? <div>
+            <h4>Latest Repository</h4>
+            { repo.repoJson.map((elem, i) => {
+            return (<ul>
+              <li key={i}>{elem.name}</li>
+            </ul>)
+          })}</div>
+          : "dont do it"
       }
     </div>
   );
