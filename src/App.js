@@ -15,6 +15,19 @@ const useStyles = makeStyles(theme => ({
       margin: theme.spacing(0, 20, 0, 20)
     },
   },
+  test : {
+    margin: theme.spacing(0, 50, 0, 50),
+    textAlign: "center",
+    position: "relative",
+    bottom: 107,
+  },
+  li : {
+    listStyle: "none",
+    display: "block",
+    fontSize: 30.17,
+    position: "relative",
+    right: 22.5
+  }
 }));
 
 function App() {
@@ -39,8 +52,6 @@ function App() {
     // showUser(Json)
     const repo = await fetch(`https://api.github.com/users/${users}/repos?per_page=${reposCount}&sort=${reposSort}&client_id=${clientId}&client_secret=${secret}`)
     const repoJson = await repo.json()
-    console.log(repoJson, "<----repos")
-
 
     setUsers({
       Json,
@@ -49,9 +60,7 @@ function App() {
       repoJson
     })
   }
-  // const showUser = (user) => {
-  //   // console.log(user.avatar_url, "show users")
-  // }
+
   return (
     <div>
       <AppBar position="static">
@@ -73,24 +82,24 @@ function App() {
       <br />
       <br />
       <br />
-      {console.log(repo.repoJson)}
+      {console.log(repo && repo.repoJson, "<--------whats this?")}
       {users && users.Json
-        ? <div>
+        ? <div className={classes.test}>
           <img src={users.Json.avatar_url} alt={users.Json.name} />
           <h3>{users.Json.name}</h3>
         </div>
         : ""
       }
       {
-        repo.repoJson
-          ? <div>
+        repo.repoJson && repo.repoJson.length > 0
+          ? <div className={classes.test}>
             <h4>Latest Repository</h4>
-            { repo.repoJson.map((elem, i) => {
-            return (<ul>
-              <li key={i}>{elem.name}</li>
-            </ul>)
-          })}</div>
-          : "dont do it"
+            {repo.repoJson.map((elem, i) => {
+              return (<ul>
+                <li key={i} className={classes.li}>{elem.name}</li>
+              </ul>)
+            })}</div>
+          : ""
       }
     </div>
   );
