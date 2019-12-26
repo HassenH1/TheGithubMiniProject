@@ -15,7 +15,6 @@ const useStyles = makeStyles(theme => ({
     '& > *': {
       padding: theme.spacing(3, 2),
       margin: theme.spacing(0, 20, 0, 20),
-      // width: theme.spacing(16),
     },
   },
   test: {
@@ -62,10 +61,6 @@ function App() {
   const [repo, setRepo] = useState({})
 
   const handleChange = (e) => {
-    // setUsers({
-    //   ...users,
-    //   [e.target.name]: e.target.value
-    // },)
     getUsers(e.target.value)
   }
   const getUsers = async (users) => {
@@ -75,7 +70,6 @@ function App() {
     const reposSort = 'asc'
     const profileResponse = await fetch(`https://api.github.com/users/${users}?client_id=${clientId}&client_secret=${secret}`)
     const Json = await profileResponse.json()
-    // showUser(Json)
     const repo = await fetch(`https://api.github.com/users/${users}/repos?per_page=${reposCount}&sort=${reposSort}&client_id=${clientId}&client_secret=${secret}`)
     const repoJson = await repo.json()
 
