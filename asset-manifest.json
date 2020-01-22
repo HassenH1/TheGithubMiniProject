@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/TheGithubMiniProject/static/css/main.d1b05096.chunk.css",
-    "main.js": "/TheGithubMiniProject/static/js/main.70b22a50.chunk.js",
-    "main.js.map": "/TheGithubMiniProject/static/js/main.70b22a50.chunk.js.map",
-    "runtime-main.js": "/TheGithubMiniProject/static/js/runtime-main.3683606b.js",
-    "runtime-main.js.map": "/TheGithubMiniProject/static/js/runtime-main.3683606b.js.map",
-    "static/js/2.55a86488.chunk.js": "/TheGithubMiniProject/static/js/2.55a86488.chunk.js",
-    "static/js/2.55a86488.chunk.js.map": "/TheGithubMiniProject/static/js/2.55a86488.chunk.js.map",
-    "index.html": "/TheGithubMiniProject/index.html",
-    "precache-manifest.5a09b20deac20ad5c36d3edfa07ac17b.js": "/TheGithubMiniProject/precache-manifest.5a09b20deac20ad5c36d3edfa07ac17b.js",
-    "service-worker.js": "/TheGithubMiniProject/service-worker.js",
-    "static/css/main.d1b05096.chunk.css.map": "/TheGithubMiniProject/static/css/main.d1b05096.chunk.css.map",
-    "static/js/2.55a86488.chunk.js.LICENSE": "/TheGithubMiniProject/static/js/2.55a86488.chunk.js.LICENSE"
+    "main.css": "/Githubfinder/static/css/main.d1b05096.chunk.css",
+    "main.js": "/Githubfinder/static/js/main.08f6d811.chunk.js",
+    "main.js.map": "/Githubfinder/static/js/main.08f6d811.chunk.js.map",
+    "runtime-main.js": "/Githubfinder/static/js/runtime-main.37383e34.js",
+    "runtime-main.js.map": "/Githubfinder/static/js/runtime-main.37383e34.js.map",
+    "static/js/2.55a86488.chunk.js": "/Githubfinder/static/js/2.55a86488.chunk.js",
+    "static/js/2.55a86488.chunk.js.map": "/Githubfinder/static/js/2.55a86488.chunk.js.map",
+    "index.html": "/Githubfinder/index.html",
+    "precache-manifest.b8230ad69a66846abd5ea0056ad298ed.js": "/Githubfinder/precache-manifest.b8230ad69a66846abd5ea0056ad298ed.js",
+    "service-worker.js": "/Githubfinder/service-worker.js",
+    "static/css/main.d1b05096.chunk.css.map": "/Githubfinder/static/css/main.d1b05096.chunk.css.map",
+    "static/js/2.55a86488.chunk.js.LICENSE": "/Githubfinder/static/js/2.55a86488.chunk.js.LICENSE"
   },
   "entrypoints": [
-    "static/js/runtime-main.3683606b.js",
+    "static/js/runtime-main.37383e34.js",
     "static/js/2.55a86488.chunk.js",
     "static/css/main.d1b05096.chunk.css",
-    "static/js/main.70b22a50.chunk.js"
+    "static/js/main.08f6d811.chunk.js"
   ]
 }
