@@ -64,11 +64,13 @@ function App() {
     getUsers(e.target.value)
   }
   const getUsers = async (users) => {
-    const clientId = "2f0015355a97f0481126"
-    const secret = "ba23bdad1caba7400d575f16a9de0b453b878d67"
+    const clientId = process.env.REACT_APP_API_KEY
+    const secret = process.env.REACT_APP_SECRET_KEY
     const reposCount = 5
     const reposSort = 'asc'
+    console.log("before the fetchcall")
     const profileResponse = await fetch(`https://api.github.com/users/${users}?client_id=${clientId}&client_secret=${secret}`)
+    console.log("after the fetch call?")
     const Json = await profileResponse.json()
     const repo = await fetch(`https://api.github.com/users/${users}/repos?per_page=${reposCount}&sort=${reposSort}&client_id=${clientId}&client_secret=${secret}`)
     const repoJson = await repo.json()
